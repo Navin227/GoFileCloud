@@ -1,0 +1,70 @@
+# ----------------------
+# Terraform
+# ----------------------
+**/.terraform/*
+*.tfstate
+*.tfstate.*
+*.zip
+.terraform.lock.hcl
+
+# ----------------------
+# Terraform Providers (IMPORTANT)
+# ----------------------
+*.exe
+
+# ----------------------
+# Python
+# ----------------------
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# ----------------------
+# Node
+# ----------------------
+node_modules/
+dist/
+build/
+
+# ----------------------
+# OS
+# ----------------------
+.DS_Store
+Thumbs.db
+
+# ----------------------
+# Archives (YOU BROKE PUSH BECAUSE OF THESE)
+# ----------------------
+*.zip
+*.tar
+*.gz
+
+# ----------------------
+# Embedded repo fix
+# ----------------------
+
+
+# =========================
+# Environment files
+# =========================
+.env
+.env.*
+*.env
+
+# Frontend specific
+frontend/.env
+frontend/.env.*
+GoFile/frontend/.env
+GoFile/frontend/.env.*
+
+# Backend / Lambda env files
+GoFile/infrastructure/**/.env
+
+*.tfvars
+terraform.tfvars
+**/terraform.tfvars
+.env
+.env.*
+
