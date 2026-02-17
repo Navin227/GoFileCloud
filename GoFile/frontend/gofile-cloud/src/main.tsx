@@ -14,8 +14,15 @@ Amplify.configure({
         oauth: {
           domain: import.meta.env.VITE_COGNITO_DOMAIN,
           scopes: ['openid', 'profile', 'email'],
-          redirectSignIn: ['http://localhost:8080/auth'],
-          redirectSignOut: ['http://localhost:8080/auth'],
+redirectSignIn: [
+  'http://localhost:8080/auth',
+  'https://main.d1mzxedhtb65tt.amplifyapp.com/auth'
+],
+redirectSignOut: [
+  'http://localhost:8080/auth',
+  'https://main.d1mzxedhtb65tt.amplifyapp.com/auth'
+],
+
           responseType: 'code',
         }
       }
