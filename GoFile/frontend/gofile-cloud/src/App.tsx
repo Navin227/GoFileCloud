@@ -12,19 +12,20 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Navigate to="/auth" replace />} />
-        <Route path="/auth" element={<Auth />} />
-        <Route path="/home" element={<Index />} />
-        
-        {/* Tool Routes */}
-        <Route path="/tools/convert" element={<Converter />} />
-        <Route path="/tools/merge" element={<Merger />} />
-        <Route path="/tools/split" element={<Splitter />} />
-        <Route path="/tools/compress" element={<Compressor />} />
-        <Route path="/tools/summarize" element={<Summarizer />} />
+  <Route path="/" element={<Auth />} />
+  <Route path="/auth" element={<Auth />} />
+  <Route path="/home" element={<Index />} />
 
-        <Route path="*" element={<Navigate to="/home" />} />
-      </Routes>
+  {/* Tool Routes */}
+  <Route path="/tools/convert" element={<Converter />} />
+  <Route path="/tools/merge" element={<Merger />} />
+  <Route path="/tools/split" element={<Splitter />} />
+  <Route path="/tools/compress" element={<Compressor />} />
+  <Route path="/tools/summarize" element={<Summarizer />} />
+
+  <Route path="*" element={<Navigate to="/" replace />} />
+</Routes>
+
     </BrowserRouter>
   );
 }
