@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App'
 import { Amplify } from 'aws-amplify'
+import { signIn } from "aws-amplify/auth";
 import './index.css'  // Ye missing hogi toh design nahi aayega
 
 console.log("ENV CHECK:", {
@@ -17,21 +18,21 @@ Amplify.configure({
   Auth: {
     Cognito: {
       userPoolId: import.meta.env.VITE_COGNITO_USER_POOL_ID,
-      userPoolClientId: import.meta.env.VITE_COGNITO_USER_POOL_CLIENT_ID,
+      userPoolClientId: import.meta.env.VITE_COGNITO_CLIENT_ID,
+      region: import.meta.env.VITE_AWS_REGION,
       loginWith: {
         oauth: {
           domain: import.meta.env.VITE_COGNITO_DOMAIN,
-          scopes: ['openid', 'profile', 'email'],
-redirectSignIn: [
-  'http://localhost:8080/auth',
-  'https://main.d1mzxedhtb65tt.amplifyapp.com/auth'
-],
-redirectSignOut: [
-  'http://localhost:8080/auth',
-  'https://main.d1mzxedhtb65tt.amplifyapp.com/auth'
-],
-
-          responseType: 'code',
+          scopes: ["openid", "profile", "email"],
+          redirectSignIn: [
+            "http://localhost:8080/auth",
+            "https://main.d1mzxedhtb65tt.amplifyapp.com/auth"
+          ],
+          redirectSignOut: [
+            "http://localhost:8080/auth",
+            "https://main.d1mzxedhtb65tt.amplifyapp.com/auth"
+          ],
+          responseType: "code"
         }
       }
     }
