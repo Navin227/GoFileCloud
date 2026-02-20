@@ -11,7 +11,7 @@ export default function Auth() {
       try {
         const session = await fetchAuthSession();
         if (session.tokens) {
-          navigate("/my-files");
+        navigate("/home", { replace: true });
         }
       } catch (e) {
         console.log("No session.");

@@ -2,23 +2,17 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App'
 import { Amplify } from 'aws-amplify'
-import { signIn } from "aws-amplify/auth";
+
 import './index.css'  // Ye missing hogi toh design nahi aayega
 
-console.log("ENV CHECK:", {
-  region: import.meta.env.VITE_AWS_REGION,
-  userPoolId: import.meta.env.VITE_COGNITO_USER_POOL_ID,
-  clientId: import.meta.env.VITE_COGNITO_CLIENT_ID,
-  domain: import.meta.env.VITE_COGNITO_DOMAIN,
-  region: import.meta.env.VITE_AWS_REGION,
-})
+
 
 // Sabse pehle config
 Amplify.configure({
   Auth: {
     Cognito: {
       userPoolId: import.meta.env.VITE_COGNITO_USER_POOL_ID,
-      userPoolClientId: import.meta.env.VITE_COGNITO_CLIENT_ID,
+      userPoolClientId: import.meta.env.VITE_COGNITO_USER_POOL_CLIENT_ID,
       region: import.meta.env.VITE_AWS_REGION,
       loginWith: {
         oauth: {
@@ -38,7 +32,13 @@ Amplify.configure({
     }
   }
 });
-
+console.log("ENV CHECK:", {
+  region: import.meta.env.VITE_AWS_REGION,
+  userPoolId: import.meta.env.VITE_COGNITO_USER_POOL_ID,
+  clientId: import.meta.env.VITE_COGNITO_USER_POOL_CLIENT_ID,
+  domain: import.meta.env.VITE_COGNITO_DOMAIN,
+ 
+})
 
 
 ReactDOM.createRoot(document.getElementById('root')!).render(

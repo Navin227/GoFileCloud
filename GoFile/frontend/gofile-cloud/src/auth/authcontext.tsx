@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
-import { signOut, getCurrentUser, fetchUserAttributes } from '@aws-amplify/auth';
+import { signOut, getCurrentUser, fetchUserAttributes , signInWithRedirect } from '@aws-amplify/auth';
+
 
 interface User {
   username: string;
@@ -14,6 +15,14 @@ interface AuthContextType {
   refresh: () => Promise<void>;
 }
 
+export const checkUser = async () => {
+  try {
+    const user = await getCurrentUser();
+    return user;
+  } catch {
+    return null;
+  }
+};
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
