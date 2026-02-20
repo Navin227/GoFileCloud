@@ -101,7 +101,6 @@ resource "aws_api_gateway_method_response" "options_200" {
   depends_on = [aws_api_gateway_method.options]
 }
 
-# --- 7. CORS: OPTIONS Integration Response ---
 resource "aws_api_gateway_integration_response" "options_200" {
   for_each    = local.api_routes
   rest_api_id = aws_api_gateway_rest_api.this.id
@@ -109,11 +108,12 @@ resource "aws_api_gateway_integration_response" "options_200" {
   http_method = aws_api_gateway_method.options[each.key].http_method
   status_code = aws_api_gateway_method_response.options_200[each.key].status_code
 
-response_parameters = {
-  "method.response.header.Access-Control-Allow-Origin"  = "'http://localhost:8080',"
-  "method.response.header.Access-Control-Allow-Methods" = "'GET,OPTIONS,POST,PUT'"
-  "method.response.header.Access-Control-Allow-Headers" = "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
-}
+  response_parameters = {
+    "method.response.header.Access-Control-Allow-Origin"  = "'*'"
+    "method.response.header.Access-Control-Allow-Methods" = "'GET,POST,OPTIONS'"
+    "method.response.header.Access-Control-Allow-Headers" = "'Content-Type,Authorization,X-Amz-Date,X-Api-Key,X-Amz-Security-Token'"
+  }
+
   depends_on = [
     aws_api_gateway_integration.options,
     aws_api_gateway_method_response.options_200
